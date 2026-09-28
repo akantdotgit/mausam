@@ -6,13 +6,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
-### Planned
-- 7-day daily forecast
-- Hourly forecast with day selector
-- Imperial/Metric unit toggle
-- Responsive polish, hover/focus states, skeleton loading
-- Deployment and serverless API proxy
-
 ## [0.1.0] - 2026-09-28
 
 Phase 1 MVP.
