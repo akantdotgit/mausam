@@ -1,3 +1,5 @@
+import bglarge from '../assets/images/bg-today-large.svg';
+
 function CurrentWeatherCard({ data }) {
     const { name, country, current: { temperature, description, weather_icon } } = data;
     const iconUrl = `https://openweathermap.org/img/wn/${weather_icon}@4x.png`
@@ -8,9 +10,9 @@ function CurrentWeatherCard({ data }) {
         day: 'numeric',
         year: 'numeric',
     });
-
+// {{ backgroundImage: `url(${myBackground})` }}
     return (
-        <div className="rounded-2xl bg-linear-to-br from-indigo-500 to-blue-700 p-6 flex items-center justify-between">
+        <div style={{ backgroundImage: `url(${bglarge})` }} className="min-h-45 rounded-2xl bg-cover bg-center p-6 flex items-center justify-between">
             <div>
                 <h2 className="text-xl font-bold text-white">
                     {name}{country? `, ${country}` : ''}
@@ -27,4 +29,4 @@ function CurrentWeatherCard({ data }) {
     )
 }
 
-export default CurrentWeatherCard
+export default CurrentWeatherCard;
