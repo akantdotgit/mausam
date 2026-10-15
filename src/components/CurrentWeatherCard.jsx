@@ -1,6 +1,7 @@
 import bglarge from '../assets/images/bg-today-large.svg';
+import { formatTemperature } from '../utils/unitConversion';
 
-function CurrentWeatherCard({ data }) {
+function CurrentWeatherCard({ data, units }) {
     const { name, country, current: { temperature, description, weather_icon } } = data;
     const iconUrl = `https://openweathermap.org/img/wn/${weather_icon}@4x.png`
 
@@ -10,7 +11,7 @@ function CurrentWeatherCard({ data }) {
         day: 'numeric',
         year: 'numeric',
     });
-// {{ backgroundImage: `url(${myBackground})` }}
+
     return (
         <div style={{ backgroundImage: `url(${bglarge})` }} className="min-h-45 rounded-2xl bg-cover bg-center p-6 flex items-center justify-between">
             <div>
@@ -22,7 +23,7 @@ function CurrentWeatherCard({ data }) {
             <div className="flex items-center gap-2">
                 <img src={iconUrl} alt={description} className="w-18 h-18 sm:w-20 sm:h-20" />
                 <span className="text-6xl font-bold text-white">
-                    {Math.round(temperature)}°
+                    {formatTemperature(temperature, units)}
                 </span>
             </div>
         </div>

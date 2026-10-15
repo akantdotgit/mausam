@@ -21,7 +21,7 @@ export async function fetchCurrentWeather(city) {
             feels_like: data.main.feels_like,
             humidity: data.main.humidity,
             wind_speed: data.wind.speed,
-            precipitation: data.rain?.['1h'] ?? 0,
+            precipitation: data.rain?.['1h'] ?? 0, // Maybe this is not working?!
             weather_icon: data.weather[0].icon,
             description: data.weather[0].description,
         }

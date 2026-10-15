@@ -6,10 +6,11 @@ export function useWeather() {
     const [data, setData] = useState(null);
     const [forecast, setForecast] = useState(null);
     const [error, setError] = useState(null);
+    const [units, setUnits] = useState('metric');
 
     const search = useCallback(async (city) => {
         setStatus('loading');
-        setError(null);  
+        setError(null);
         try {
             const current = await fetchCurrentWeather(city);
             const forecastData = await fetchForecast(current.lat, current.lon);
@@ -20,7 +21,11 @@ export function useWeather() {
             setError(err.message);
             setStatus('error');
         }
-    }, [])
+    }, []);
 
-    return { status, data, forecast, error, search };
+    const toggleUnits = useCallback(() => {
+        setUnits((prev) => (prev === 'metric' ? 'imperial' : 'metric'));
+    }, []);
+
+    return { status, data, forecast, error, units, search, toggleUnits };
 };

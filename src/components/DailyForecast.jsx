@@ -1,6 +1,7 @@
+import { formatTemperature } from '../utils/unitConversion';
 import { getWeatherInfo } from '../utils/weatherCodeMap';
 
-function DayCard({ date, weatherCode, high, low }) {
+function DayCard({ date, weatherCode, high, low, units }) {
   const { description, iconUrl } = getWeatherInfo(weatherCode);
   const dayLabel = new Date(date).toLocaleDateString('en-US', { weekday: 'short' });
 
@@ -9,14 +10,14 @@ function DayCard({ date, weatherCode, high, low }) {
       <p className='text-sm text-slate-400'>{dayLabel}</p>
       <img src={iconUrl} alt={description} className='w-12 h-12' />
       <div className='flex gap-4 text-sm'>
-        <span className='text-white font-semibold'>{Math.round(high)}°</span>
-        <span className='text-slate-500'>{Math.round(low)}°</span>
+        <span className='text-white font-semibold'>{formatTemperature(high, units)}</span>
+        <span className='text-slate-500'>{formatTemperature(low, units)}</span>
       </div>
     </div>
   );
 }
 
-function DailyForecast({ daily }) {
+function DailyForecast({ daily, units }) {
   if (!daily) return null;
 
   const days = daily.time.map((date, index) => ({
@@ -31,7 +32,7 @@ function DailyForecast({ daily }) {
       <h3 className='text-white font-semibold mb-3'>Daily forecast</h3>
       <div className='w-full flex gap-3 overflow-x-scroll pb-2 scrollbar-none'>
         {days.map((day) => (
-          <DayCard key={day.date} {...day} />
+          <DayCard key={day.date} {...day} units={units} />
         ))}
       </div>
     </div>

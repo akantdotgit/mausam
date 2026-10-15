@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+@theme {
+  --font-primary: "Bricolage", sans-serif;
+  --font-secondary: "DM_Sans", sans-serif;
+}
+
+@font-face {
+  font-family: "Bricolage";
+  src: url('../public/fonts/Bricolage_Grotesque/BricolageGrotesque-VariableFont_opsz\,wdth\,wght.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "DM_Sans";
+  src: url('../public/fonts/DM_Sans/DMSans-VariableFont_opsz\,wght.ttf') format('truetype');
+}

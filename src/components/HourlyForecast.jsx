@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { getWeatherInfo } from '../utils/weatherCodeMap';
+import { formatTemperature } from "../utils/unitConversion";
 
-function HourRow ({ time, weatherCode, temp }) {
+function HourRow ({ time, weatherCode, temp, units }) {
     const { iconUrl, description } = getWeatherInfo(weatherCode);
     const timeLabel = new Date(time).toLocaleTimeString('en-US', {
         hour: 'numeric',
@@ -14,12 +15,12 @@ function HourRow ({ time, weatherCode, temp }) {
                 <img src={iconUrl} alt={description} className="w-6 h-6" />
                 <span className="text-slate-300">{timeLabel}</span>
             </div>    
-            <span className="text-white font-semibold">{Math.round(temp)}°</span>
+            <span className="text-white font-semibold">{formatTemperature(temp, units)}</span>
         </div>
     )
 }
 
-function HourlyForecast({ hourly, dailyDates }) {
+function HourlyForecast({ hourly, dailyDates, units }) {
     const [selectedDate, setSelectedDate] = useState(dailyDates?.[0] ?? null);
 
     if (!hourly || !selectedDate) return null;
@@ -46,7 +47,7 @@ function HourlyForecast({ hourly, dailyDates }) {
             </div>
             <div className="flex flex-col gap-2.25 max-h-100 overflow-y-auto scrollbar-none">
                 {hoursForSelectedDay.map((hour) => (
-                    <HourRow key={hour.time} {...hour} />
+                    <HourRow key={hour.time} {...hour} units={units} />
                 ))}
             </div>
         </div>

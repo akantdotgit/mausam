@@ -5,22 +5,24 @@ import { useWeather } from "./hooks/useWeather";
 import logo from './assets/images/logo.svg';
 import DailyForecast from "./components/DailyForecast";
 import HourlyForecast from "./components/HourlyForecast";
+import UnitToggle from './components/UnitToggle';
 
 function App() {
-  const { status, data, forecast, error, search } = useWeather();
+  const { status, data, forecast, error, units, search, toggleUnits } = useWeather();
 
   return (
-    <main className="min-h-screen w-full bg-slate-950 flex flex-col items-center px-6 py-6 sm:px-12 sm:py-12 text-white">
+    <main className="min-h-screen w-full font-secondary bg-slate-950 flex flex-col items-center px-6 py-6 sm:px-12 sm:py-8 text-white">
       <header className="w-full flex flex-col items-center">
-        <nav className="w-full pb-15">
+        <nav className="w-full mb-5 flex justify-between">
           <img className="w-60 h-auto" src={logo} alt="" />
+          <UnitToggle units={units} onToggle={toggleUnits} />
         </nav>
-        <h1 className="text-3xl font-bold text-white mb-6">How's the sky looking today?</h1>
+        <h1 className="text-[2.2rem] font-primary font-semibold text-white mb-10">How's the sky looking today?</h1>
       </header>
 
       <SearchBar onSearch={search} />
 
-      <div className="w-full max-w-5xl mt-6">
+      <div className="w-full max-w-5xl mt-9">
         {status === 'idle' && (
           <p className="text-center text-slate-300">Search for a place to see the weather</p>
         )}
@@ -35,11 +37,11 @@ function App() {
         {status === 'success' && data && (
           <div className="flex justify-center gap-6 max-sm:flex-col">
             <div className="flex flex-col">
-              <CurrentWeatherCard data={data} />
-              <MetricsGrid data={data} />
-              <DailyForecast daily={forecast?.daily} />
+              <CurrentWeatherCard data={data} units={units} />
+              <MetricsGrid data={data} units={units} />
+              <DailyForecast daily={forecast?.daily} units={units} />
             </div>
-            <HourlyForecast hourly={forecast?.hourly} dailyDates={forecast?.daily.time} />
+            <HourlyForecast hourly={forecast?.hourly} dailyDates={forecast?.daily.time} units={units} />
           </div>
         )}
       </div>
