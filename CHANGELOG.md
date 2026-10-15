@@ -11,11 +11,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 Phase 2: forecasts.
  
 ### Added
+- Imperial/Metric unit toggle (`UnitToggle` component)
+- `utils/unitConversion.js` with pure conversion functions and display formatters for temperature, wind speed, and precipitation
 - 7-day daily forecast, sourced from Open-Meteo
 - Hourly forecast with a day-selector dropdown
 - `weatherCodeMap` utility mapping Open-Meteo WMO weather codes to OpenWeatherMap icons, so current, daily, and hourly icons stay visually consistent
 
 ### Changed
+- Weather data is now always fetched in metric; unit display is handled entirely client-side rather than refetching on toggle
 - `fetchCurrentWeather` now also returns `lat`/`lon`, reused by `fetchForecast` to avoid a second geocoding call
 - `useWeather` now fetches current weather and forecast together under a single combined `status`
 
