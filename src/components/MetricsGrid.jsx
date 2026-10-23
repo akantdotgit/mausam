@@ -2,9 +2,9 @@ import { formatPercipitation, formatTemperature, formatWindSpeed } from "../util
 
 function MetricTile({ label, value }) {
   return (
-    <div className="bg-slate-800 flex flex-col gap-2 rounded-lg border border-slate-700 p-3">
-      <p className="text-sm text-slate-400">{label}</p>
-      <p className="text-2xl font-semibold text-white mt-1">{value}</p>
+    <div className="bg-neutral-800 flex flex-col gap-2.5 rounded-[10px] border border-neutral-700 px-3.5 py-3">
+      <p className="text-[15px] text-neutral-200">{label}</p>
+      <p className="text-2xl font-light text-neutral-0 mt-1">{value}</p>
     </div>
   )
 }
@@ -13,7 +13,7 @@ function MetricsGrid({ data, units }) {
   const { current: { feels_like, humidity, wind_speed, precipitation } } = data;
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4.5 mt-6">
       <MetricTile label="Feels Like" value={formatTemperature(feels_like, units)} />
       <MetricTile label="Humidity" value={`${humidity}%`} />
       <MetricTile label="Wind" value={formatWindSpeed(wind_speed, units)} />
@@ -22,4 +22,4 @@ function MetricsGrid({ data, units }) {
   )
 }
 
-export default MetricsGrid
+export default MetricsGrid;

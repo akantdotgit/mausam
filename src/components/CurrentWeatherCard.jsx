@@ -15,10 +15,10 @@ function CurrentWeatherCard({ data, units }) {
     return (
         <div style={{ backgroundImage: `url(${bglarge})` }} className="min-h-45 rounded-2xl bg-cover bg-center p-6 flex items-center justify-between">
             <div>
-                <h2 className="text-xl font-bold text-white">
+                <h2 className="text-xl font-bold text-neutral-0">
                     {name}{country? `, ${country}` : ''}
                 </h2>
-                <p className="text-sm text-white/70 mt-1">{dateStr}</p>
+                <p className="text-sm text-neutral-0/70 mt-1">{dateStr}</p>
             </div>
             <div className="flex items-center gap-2">
                 <img src={iconUrl} alt={description} className="w-18 h-18 sm:w-20 sm:h-20" />

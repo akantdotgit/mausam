@@ -7,7 +7,7 @@ export async function fetchCurrentWeather(city) {
     const res = await fetch(url);
     if (!res.ok) {
         if (res.status === 404) throw new Error('City not found');
-        throw new Error('Something went wrong. Please try again.');
+        throw new Error('API error');
     }
 
     const data = await res.json();
@@ -21,7 +21,7 @@ export async function fetchCurrentWeather(city) {
             feels_like: data.main.feels_like,
             humidity: data.main.humidity,
             wind_speed: data.wind.speed,
-            precipitation: data.rain?.['1h'] ?? 0, // Maybe this is not working?!
+            precipitation: data.rain?.['1h'] ?? 0,
             weather_icon: data.weather[0].icon,
             description: data.weather[0].description,
         }

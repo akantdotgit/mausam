@@ -6,10 +6,27 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-10-23
+
+Phase 3: unit toggle UI, loading/error states, hover/focus, and design tokens.
+
+### Added
+- `UnitToggle` restyled as a custom dropdown (Metric/Imperial options with checkmarks, plus a quick "Switch to..." link), replacing the plain toggle button
+- `HourlyForecast`'s day selector rebuilt as a custom dropdown matching `UnitToggle`'s pattern, replacing the native `<select>`
+- Non-blocking "search in progress" indicator, absolutely positioned to overlay the current weather card instead of shifting layout
+- `Skeleton` and `LoadingState` components providing a layout-shaped skeleton for first-time searches
+- `APIerror` full-page error component with a Retry action, used for any failure other than "city not found"
+- A distinct "No search result found!" message for the city-not-found case, separate from the generic error state
+- Hover and focus-visible states across every interactive element (search input/button, both dropdowns and their options, Retry button)
+- Design-system color tokens (`Neutral 900–0`, `Orange 500`, `Blue 500/700`) added via Tailwind v4 `@theme` in `index.css`, replacing approximated built-in Tailwind colors across all components
+
+### Fixed
+- `forecast?.daily.time` missing a second optional-chaining operator, which could crash if `forecast.daily` were ever undefined
+
 ## [0.2.0] - 2026-10-11
- 
+
 Phase 2: forecasts.
- 
+
 ### Added
 - Imperial/Metric unit toggle (`UnitToggle` component)
 - `utils/unitConversion.js` with pure conversion functions and display formatters for temperature, wind speed, and precipitation
@@ -37,6 +54,7 @@ Phase 1 MVP.
 - API key handled through `.env` with a committed `.env.example`
 - README with setup instructions, architecture notes, and roadmap
 
-[Unreleased]: https://github.com/akantdotgit/mausam/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/akantdotgit/mausam/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/akantdotgit/mausam/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/akantdotgit/mausam/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/akantdotgit/mausam/releases/tag/v0.1.0

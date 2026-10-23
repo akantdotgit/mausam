@@ -6,44 +6,62 @@ import logo from './assets/images/logo.svg';
 import DailyForecast from "./components/DailyForecast";
 import HourlyForecast from "./components/HourlyForecast";
 import UnitToggle from './components/UnitToggle';
+import { Loader2 } from "lucide-react";
+import APIerror from "./components/APIerror";
+import LoadingState from "./components/LoadingState";
 
 function App() {
-  const { status, data, forecast, error, units, search, toggleUnits } = useWeather();
+  const { status, data, forecast, error, units, lastCity, search, toggleUnits } = useWeather();
 
   return (
-    <main className="min-h-screen w-full font-secondary bg-slate-950 flex flex-col items-center px-6 py-6 sm:px-12 sm:py-8 text-white">
+    <main className="min-h-screen w-full font-secondary bg-neutral-900 flex flex-col items-center px-6 py-6 sm:px-12 sm:py-8 text-white">
       <header className="w-full flex flex-col items-center">
-        <nav className="w-full mb-5 flex justify-between">
-          <img className="w-60 h-auto" src={logo} alt="" />
+        <nav className="w-full flex items-center justify-between">
+          <img className="w-60 h-auto" src={logo} alt="Logo" />
           <UnitToggle units={units} onToggle={toggleUnits} />
         </nav>
-        <h1 className="text-[2.2rem] font-primary font-semibold text-white mb-10">How's the sky looking today?</h1>
       </header>
 
-      <SearchBar onSearch={search} />
+      <div className="w-full max-w-5xl flex flex-col items-center mt-18">
+        <div className="flex flex-col items-center">
+          {status === 'error' && !data && error !== 'City not found' ? (
+            <APIerror onRetry={() => search(lastCity)} />
+          ) : (<div>
+            <h1 className="text-[2.2rem] text-center font-primary font-semibold text-white mb-9">How's the sky looking today?</h1>
+            <div className="relative w-full px-5 flex flex-col items-center">
+              <SearchBar onSearch={search} />
+              {status === 'loading' && data && (
+                <div className="absolute top-full left-5 right-0 w-full max-w-108.75 flex bg-neutral-800 px-3 py-2.5 rounded-lg mt-2 items-center gap-2 text-white text-xs shadow-lg z-10">
+                  <Loader2 size={16} className="animate-spin" />
+                  <span className="text-[13px]">Search in progress</span>
+                </div>
+              )}
 
-      <div className="w-full max-w-5xl mt-9">
-        {status === 'idle' && (
-          <p className="text-center text-slate-300">Search for a place to see the weather</p>
-        )}
-        {status === 'loading' && (
-          <p className="text-center text-slate-300">Loading...</p>
-        )}
-        {status === 'error' && (
-          <div className="text-center">
-            <p className="text-red-400">{error}</p>
-          </div>
-        )}
-        {status === 'success' && data && (
-          <div className="flex justify-center gap-6 max-sm:flex-col">
-            <div className="flex flex-col">
-              <CurrentWeatherCard data={data} units={units} />
-              <MetricsGrid data={data} units={units} />
-              <DailyForecast daily={forecast?.daily} units={units} />
+              {status === 'idle' && !data && (
+                <p className="text-center text-neutral-0 text-[17px] font-medium mt-8">Search for a place to see the weather!</p>
+              )}
+
+              {status === 'loading' && !data && (
+                <LoadingState />
+              )}
+
+              {status === 'error' && error === 'City not found' && (
+                <p className="text-center text-white text-[17px] font-medium mt-8">No search result found!</p>
+              )}
             </div>
-            <HourlyForecast hourly={forecast?.hourly} dailyDates={forecast?.daily.time} units={units} />
           </div>
-        )}
+          )}
+          {data && status !== 'error' && (
+            <div className="flex justify-center gap-6 max-sm:flex-col mt-8">
+              <div className="flex flex-col">
+                <CurrentWeatherCard data={data} units={units} />
+                <MetricsGrid data={data} units={units} />
+                <DailyForecast daily={forecast?.daily} units={units} />
+              </div>
+              <HourlyForecast hourly={forecast?.hourly} dailyDates={forecast?.daily?.time} units={units} />
+            </div>
+          )}
+        </div>
       </div>
     </main>
   )

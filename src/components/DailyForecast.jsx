@@ -6,12 +6,12 @@ function DayCard({ date, weatherCode, high, low, units }) {
   const dayLabel = new Date(date).toLocaleDateString('en-US', { weekday: 'short' });
 
   return (
-    <div className='bg-slate-800 rounded-lg border border-slate-700 p-2.5 flex flex-col items-center gap-2 max-w-22.5'>
-      <p className='text-sm text-slate-400'>{dayLabel}</p>
+    <div className='bg-neutral-800 rounded-lg border border-neutral-700 p-2 flex flex-col items-center gap-2 max-w-22.5'>
+      <p className='text-sm text-neutral-0'>{dayLabel}</p>
       <img src={iconUrl} alt={description} className='w-12 h-12' />
-      <div className='flex gap-4 text-sm'>
-        <span className='text-white font-semibold'>{formatTemperature(high, units)}</span>
-        <span className='text-slate-500'>{formatTemperature(low, units)}</span>
+      <div className='flex gap-6 text-sm'>
+        <span className='text-neutral-200 text-[12px] font-medium'>{formatTemperature(high, units)}</span>
+        <span className='text-neutral-200 text-[12px] font-medium'>{formatTemperature(low, units)}</span>
       </div>
     </div>
   );
@@ -29,7 +29,7 @@ function DailyForecast({ daily, units }) {
   
   return (
     <div className='mt-6'>
-      <h3 className='text-white font-semibold mb-3'>Daily forecast</h3>
+      <h3 className='text-white font-medium mb-3'>Daily forecast</h3>
       <div className='w-full flex gap-3 overflow-x-scroll pb-2 scrollbar-none'>
         {days.map((day) => (
           <DayCard key={day.date} {...day} units={units} />
