@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <!-- Central Ring/Circle -->
+  <circle cx="32" cy="32" r="10" fill="none" stroke="#FF7A00" stroke-width="6" />
+
+  <!-- Sun Rays -->
+  <g fill="#FF7A00" transform="translate(32, 32)">
+    <rect x="-2" y="-28" width="4" height="10" rx="1" transform="rotate(0)" />
+    <rect x="-2" y="-28" width="4" height="10" rx="1" transform="rotate(30)" />
+    <rect x="-2" y="-28" width="4" height="10" rx="1" transform="rotate(60)" />
+    <rect x="-2" y="-28" width="4" height="10" rx="1" transform="rotate(90)" />
+    <rect x="-2" y="-28" width="4" height="10" rx="1" transform="rotate(120)" />
+    <rect x="-2" y="-28" width="4" height="10" rx="1" transform="rotate(150)" />
+    <rect x="-2" y="-28" width="4" height="10" rx="1" transform="rotate(180)" />
+    <rect x="-2" y="-28" width="4" height="10" rx="1" transform="rotate(210)" />
+    <rect x="-2" y="-28" width="4" height="10" rx="1" transform="rotate(240)" />
+    <rect x="-2" y="-28" width="4" height="10" rx="1" transform="rotate(270)" />
+    <rect x="-2" y="-28" width="4" height="10" rx="1" transform="rotate(300)" />
+    <rect x="-2" y="-28" width="4" height="10" rx="1" transform="rotate(330)" />
+  </g>
+</svg>
