@@ -1,9 +1,7 @@
-const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
-const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 const FORECAST_URL = 'https://api.open-meteo.com/v1/forecast';
 
 export async function fetchCurrentWeather(city) {
-    const url = `${BASE_URL}?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric`;
+    const url = `/api/weather?q=${city}`;
     const res = await fetch(url);
     if (!res.ok) {
         if (res.status === 404) throw new Error('City not found');

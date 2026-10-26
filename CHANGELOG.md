@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+Phase 4 (deployment) and Phase 5 (serverless proxy, in progress).
+
+### Added
+- Deployed to Vercel (production)
+- `api/weather.js`: a Vercel serverless function that proxies OpenWeatherMap current-weather requests, keeping the API key server-side instead of in the client bundle
+
+### Changed
+- `weatherApi.js` now calls the app's own `/api/weather` route instead of calling OpenWeatherMap directly
+- API key environment variable renamed from `VITE_WEATHER_API_KEY` to `WEATHER_API_KEY`, read server-side only via `process.env` (no longer `VITE_`-prefixed, so it's not inlined into the client bundle)
+
+### Removed
+- Client-side exposure of the OpenWeatherMap API key in the browser bundle
+
 ## [0.4.0] - 2026-10-26
 
 Phase 3 complete: responsive layout.
