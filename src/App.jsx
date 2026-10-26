@@ -14,20 +14,20 @@ function App() {
   const { status, data, forecast, error, units, lastCity, search, toggleUnits } = useWeather();
 
   return (
-    <main className="min-h-screen w-full font-secondary bg-neutral-900 flex flex-col items-center px-6 py-6 sm:px-12 sm:py-8 text-white">
+    <main className="min-h-screen w-full font-secondary bg-neutral-900 flex flex-col items-center px-6 py-6 md:px-12 md:py-8 text-white">
       <header className="w-full flex flex-col items-center">
         <nav className="w-full flex items-center justify-between">
-          <img className="w-60 h-auto" src={logo} alt="Logo" />
+          <img className="w-40 md:w-60 h-auto" src={logo} alt="Logo" />
           <UnitToggle units={units} onToggle={toggleUnits} />
         </nav>
       </header>
 
-      <div className="w-full max-w-5xl flex flex-col items-center mt-18">
+      <div className="w-full max-w-5xl flex flex-col items-center mt-13">
         <div className="flex flex-col items-center">
           {status === 'error' && !data && error !== 'City not found' ? (
             <APIerror onRetry={() => search(lastCity)} />
           ) : (<div>
-            <h1 className="text-[2.2rem] text-center font-primary font-semibold text-white mb-9">How's the sky looking today?</h1>
+            <h1 className="text-[52px] md:text-4xl leading-15 text-center font-primary font-semibold text-neutral-0 mb-10">How's the sky looking today?</h1>
             <div className="relative w-full px-5 flex flex-col items-center">
               <SearchBar onSearch={search} />
               {status === 'loading' && data && (
@@ -52,8 +52,8 @@ function App() {
           </div>
           )}
           {data && status !== 'error' && (
-            <div className="flex justify-center gap-6 max-sm:flex-col mt-8">
-              <div className="flex flex-col">
+            <div className="flex justify-center gap-6 max-md:flex-col mt-8">
+              <div className="min-w-0 flex flex-col">
                 <CurrentWeatherCard data={data} units={units} />
                 <MetricsGrid data={data} units={units} />
                 <DailyForecast daily={forecast?.daily} units={units} />

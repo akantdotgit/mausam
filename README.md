@@ -1,12 +1,13 @@
 # Mausam
 
-![Mausam Phase 2](docs/screenshot-phase2.png)
+![Mausam Phase 3 Desktop layout](docs/screenshot-p3-desktop.png)
+![Mausam Phase 3 Mobile layout](docs/screenshot-p3-mobile.png)
 
 A responsive weather app built with React, Vite, and Tailwind CSS. Search for any city and see its current conditions and forecast.
 
-> **Status:** Phase 3 in progress — unit toggle, UI states (loading skeleton, search-in-progress, error, no-results), hover/focus states, and real design tokens are complete. Responsive layout is the one remaining piece. See the [Roadmap](#roadmap).
+> **Status:** Phase 3 complete — fully responsive across mobile, tablet, and desktop. Deployment is the only remaining step. See the [Roadmap](#roadmap).
 
-## Features (v0.3.0)
+## Features (v0.4.0)
 
 - Search for weather by city name
 - Current conditions: temperature, weather icon, description, location, and date
@@ -17,6 +18,7 @@ A responsive weather app built with React, Vite, and Tailwind CSS. Search for an
 - Loading skeleton for first-time searches, with a non-blocking "search in progress" indicator for subsequent searches
 - Distinct error states: a friendly "No search result found!" for an unknown city, and a full-page error view with Retry for genuine API/network failures
 - Hover and focus states across every interactive element
+- Fully responsive layout across mobile, tablet, and desktop
 - Dark UI styled with Tailwind CSS, using exact design-system color tokens
 
 ## Tech Stack
@@ -114,13 +116,13 @@ src/
 
 - [x] **Phase 1:** search + current weather + metric tiles
 - [x] **Phase 2:** 7-day forecast and hourly forecast with day selector
-- [ ] **Phase 3:** polish
+- [x] **Phase 3:** polish
   - [x] Imperial/Metric unit toggle
   - [x] UI states (loading skeleton, search-in-progress, API error with Retry, no-results)
   - [x] Hover and focus states
   - [x] Design system color tokens
-  - [ ] Responsive layout (mobile vs desktop)
-- [ ] **Phase 5:** deployment (Vercel), serverless API proxy
+  - [x] Responsive layout (mobile, tablet, and desktop)
+- [ ] **Phase 4:** deployment (Vercel), serverless API proxy
 
 ## Changelog
 

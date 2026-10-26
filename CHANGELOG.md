@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-10-26
+
+Phase 3 complete: responsive layout.
+
+### Added
+- Fully responsive layout across mobile, tablet, and desktop
+- SVG background asset swap on `CurrentWeatherCard`: `bg-today-small.svg` on mobile, `bg-today-large.svg` on desktop, using CSS custom properties and Tailwind's arbitrary value syntax to avoid duplicating card markup
+- `DailyForecast` row is horizontally scrollable with fixed-width cards (`w-[90px] shrink-0`), preventing cards from squishing on narrow screens
+- `min-w-0` on the left layout column to allow it to shrink at tablet widths and let `overflow-x-scroll` correctly activate on `DailyForecast`
+- `items-start` on the outer two-column row so `HourlyForecast` height is driven by its own content, not stretched to match the left column
+
+### Changed
+- Logo scales between `w-36` on mobile and `w-60` on desktop to prevent overflow on narrow screens
+
 ## [0.3.0] - 2026-10-23
 
 Phase 3: unit toggle UI, loading/error states, hover/focus, and design tokens.
@@ -54,7 +68,8 @@ Phase 1 MVP.
 - API key handled through `.env` with a committed `.env.example`
 - README with setup instructions, architecture notes, and roadmap
 
-[Unreleased]: https://github.com/akantdotgit/mausam/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/akantdotgit/mausam/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/akantdotgit/mausam/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/akantdotgit/mausam/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/akantdotgit/mausam/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/akantdotgit/mausam/releases/tag/v0.1.0
