@@ -5,7 +5,7 @@
 
 A responsive weather app built with React, Vite, and Tailwind CSS. Search for any city and see its current conditions and forecast.
 
-> **Status:** Phase 3 (polish) and Phase 4 (deployment) complete — live on Vercel. Phase 5 (serverless proxy to hide the API key) is in progress. See the [Roadmap](#roadmap).
+> **Status:** All planned phases complete — live on Vercel, with the OpenWeatherMap API key hidden behind a serverless proxy. See the [Roadmap](#roadmap).
 
 ## Features (v0.4.0)
 
@@ -80,7 +80,7 @@ npm run preview
 
 ## Deployment
 
-Mausam is deployed on [Vercel](https://mausam-zeta-six.vercel.app/), connected directly to this GitHub repo:
+Mausam is deployed on [Vercel](https://mausam-dev-dot2.vercel.app), connected directly to this GitHub repo:
 
 1. Import the `mausam` repo into Vercel (auto-detected as a Vite project — build command `npm run build`, output directory `dist`).
 2. Add `WEATHER_API_KEY` as an environment variable in the Vercel project settings (Production, and Preview/Development if desired).
@@ -143,11 +143,11 @@ src/
   - [x] Deploy to Vercel
   - [x] Add API key as an environment variable
   - [x] Verify production build (search, forecast, units, error states)
-- [ ] **Phase 5:** serverless API proxy to stop exposing the API key client-side
+- [x] **Phase 5:** serverless API proxy to stop exposing the API key client-side
   - [x] Create `api/weather.js` serverless function
   - [x] Point `weatherApi.js` at `/api/weather` instead of OpenWeatherMap directly
   - [x] Retire the client-side `VITE_WEATHER_API_KEY`
-  - [ ] Redeploy and re-verify the key no longer appears in the browser (Network tab / bundled JS)
+  - [x] Redeploy and re-verify the key no longer appears in the browser (Network tab / bundled JS)
 
 ## Changelog
 

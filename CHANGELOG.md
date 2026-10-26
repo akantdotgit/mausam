@@ -6,7 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
-Phase 4 (deployment) and Phase 5 (serverless proxy, in progress).
+## [0.5.0] - 2026-10-27
+
+Phase 4 (deployment) and Phase 5 (serverless proxy) complete.
 
 ### Added
 - Deployed to Vercel (production)
@@ -81,7 +83,8 @@ Phase 1 MVP.
 - API key handled through `.env` with a committed `.env.example`
 - README with setup instructions, architecture notes, and roadmap
 
-[Unreleased]: https://github.com/akantdotgit/mausam/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/akantdotgit/mausam/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/akantdotgit/mausam/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/akantdotgit/mausam/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/akantdotgit/mausam/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/akantdotgit/mausam/compare/v0.1.0...v0.2.0
